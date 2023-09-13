@@ -1,14 +1,385 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Quattrocento&family=Satisfy&display=swap");
+
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   margin: 0;
-  background-image: url(/Assets/mvp-banner.png);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Anasayfa.js stilleri */
+.anasayfa {
+  background-color: #faf7f2;
+}
+
+.topDiv {
+  display: flex;
+  justify-content: center;
+  background-image: url(./mvp-banner.png);
+  height: 110vh;
+  background-position: center;
+}
+
+.topDiv .mainPhoto img {
+  width: 70%;
+}
+
+.topDiv .description {
+  text-align: center;
+}
+
+.topDiv .description img {
+  margin: 40px;
+}
+
+.topDiv .description p {
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+  color: #fdc913;
+}
+
+.topDiv .description .slogan {
+  transform: scaleY(1.4);
+  transform-origin: center center;
+  line-height: 1.5;
+  font-family: "Barlow", sans-serif;
+  font-size: 60px;
+  color: #fffafa;
+}
+
+a {
+  color: #fffafa;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.menu .menu-item {
+  margin: 0 20px 20px 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-item p {
+  font-family: "Barlow", sans-serif;
+  font-size: 20px;
+  color: #131010;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.menu-item ul li {
+  font-size: 20px;
+}
+
+.menu img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* Pizza.js stilleri  */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+form input,
+form select,
+form button {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+a,
+button {
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  font-weight: bold;
+}
+
+#order-button,
+.order-button {
+  width: 100%;
+  background-color: #fdc913;
+  font-weight: bold;
+}
+
+.food-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.food-button .food {
+  width: 15%;
+  margin: 20px 20px;
+  background-color: #fff;
+  color: #000;
+}
+
+.pizzaDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Barlow", sans-serif;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.fiyat {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menuAdi {
+  text-align: center;
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.mt {
+  margin-top: 30px;
+}
+
+.mt a {
+  padding: 10px 30px;
+  color: #191515;
+}
+
+.pizzaDiv .header {
+  background-color: #ce2829;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+.pizzaDiv .breadcrumbs {
+  display: flex;
+  justify-content: center;
+  background-color: #ce2829;
+  width: 100%;
+}
+.pizzaDiv .breadcrumbs div {
+  margin-bottom: 20px;
+  width: 600px;
+}
+
+.pizzaDiv .breadcrumbs div a {
+  padding-left: 0;
+}
+
+.pizzaDiv h1 {
+  font-size: 30px;
+  font-family: "Barlow", sans-serif;
+  margin: 20px 0;
+}
+
+.content-height {
+  width: 600px;
+}
+
+.content p {
+  font-size: 16px;
+}
+
+.row {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 5px;
+}
+
+.boyutSec {
+  display: flex;
+  flex-direction: column;
+}
+
+.boyutSec label,
+.ikinci-row label {
+  margin: 10px;
+}
+
+.first-row {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#special-text {
+  font-size: 15px;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.siparisNotu {
+  margin-top: 20px;
+}
+
+.siparis-toplam {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.content .top-fiyat {
+  margin-bottom: 20px;
+}
+
+.siparis-toplam {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.fiyat-bottom {
+  display: flex;
+  justify-content: inherit;
+}
+
+.total-p {
+  color: #ce2829;
+}
+
+.button-group {
+
+}
+
+.bottom-column {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.bottom-column h1 {
+  font-size: 30px;
+}
+
+hr {
+  border: 0.5px solid #ccc;
+  margin-bottom: 20px;
+}
+
+#pizza-minus,
+#pizza-plus {
+  background-color: #fdc913;
+}
+
+#pizza-quantity {
+  width: 10%;
+  text-align: center;
+}
+
+/* Success.js stilleri */
+.success {
+  background-color: #ce2829;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow", sans-serif;
+}
+.success p {
+  font-size: 32px;
+  color: #fdc913;
+  margin: 70px 0 0 0;
+  font-family: "Satisfy", cursive;
+}
+
+.success h1 {
+  font-size: 60px;
+  transform: scaleY(1.5);
+  transform-origin: center center;
+  color: #fff;
+  margin: 15px 0;
+}
+
+.success hr {
+  border: 0.5px solid #ccc;
+  width: 50%;
+  margin: 50px 0;
+}
+
+/* Footer stilleri  */
+footer {
+  background-color: #292929;
+}
+
+footer img {
+  padding-right: 20px;
+}
+
+footer p {
+  color: #fff;
+  font-size: 16px;
+}
+
+footer .footer-logo {
+  width: 100%;
+  max-width: 300px;
+  margin: 30px 0;
+}
+
+footer {
+  padding-left: 30px;
+}
+
+footer .adres,
+.mail,
+.iletisim {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
 }
