@@ -7,7 +7,6 @@ export default function Anasayfa() {
       <div className="topDiv">
         <div className="description">
           <img src={ReactLogo} alt="a" />
-          <p>fırsatı kaçırma</p>
           <p className="slogan">KOD ACIKTIRIR</p>
           <p className="slogan">PIZZA, DOYURUR</p>
           <div className="mt">

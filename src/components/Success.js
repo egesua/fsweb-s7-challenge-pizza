@@ -1,14 +1,14 @@
 import React from "react";
+import ReactLogo from "./logo.svg";
 
 export default function Success() {
   return (
     <div className="success">
       <div className="header-success">
-        <img src="./logo.svg"></img>
+        <img src={ReactLogo}></img>
       </div>
-      <p>lezzetin yolda</p>
-      <h1>SİPARİŞ ALINDI</h1>
-      <hr />
+      <p>TEBRİKLER!</p>
+      <h1>SİPARİŞİNİZ ALINDI!</h1>
     </div>
   );
 }
