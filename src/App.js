@@ -24,7 +24,7 @@ const App = () => {
           <Route exact path="/">
             <Anasayfa />
           </Route>
-          <Route path="/order-pizza">
+          <Route path="/pizza">
             <OrderPizza addSiparis={handleSiparisEkle} />
           </Route>
           <Route path="/success">
