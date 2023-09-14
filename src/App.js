@@ -4,10 +4,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Anasayfa from "./components/Anasayfa";
 import Success from "./components/Success";
 import OrderPizza from "./components/OrderPizza";
-import ReactLogo from "./logo.svg";
 
 const App = () => {
+
+  // siparişleri tutmak için useState hhok'u kullanıyorum.
+
   const [siparisler, setSiparisler] = useState([]);
+
+  // yeni bir sipariş eklemek için fonksiyon tanımlıyorum, mevcut üzerine sipariş eklemek için de setSiparisler kullanalım.
 
   const handleSiparisEkle = (siparis) => {
     setSiparisler([...siparisler, siparis]);

@@ -1,3 +1,5 @@
+// İlk olarak, gerekli bağımlılıkları (React, axios, useState ve Yup) ve logo resmini içe aktarmakla başlayalım.
+
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
@@ -5,22 +7,29 @@ import { object, string } from "yup";
 import ReactLogo from "./logo.svg";
 
 export default function Pizza(props) {
+  // Bileşen içinde kullanılacak state değişkenlerini tanımladık.
   const [formData, setFormData] = useState({});
   const [hataMesaji, setHataMesaji] = useState("");
   const [pizzaAdet, setPizzaAdet] = useState(1);
   const [pizzaFiyati, setPizzaFiyati] = useState(110);
   const [malzemeFiyati, setMalzemeFiyati] = useState(0);
 
+  // Fiyatlarımız için sizin verdiğiniz sabit değerleri deklare edelim.
   const boyutFiyat = {
     small: 110,
     medium: 150,
     large: 190,
   };
 
+  // Yup kütüphanesi ile kullanılacak bir şema tanımlıyoruz, formu biraz daha modüler yapıda kullanabilmemizi sağlıyor. Genel olarak bir şema oluşturduk.
+
   let userSchema = object({
     boyut: string().required("Boyut seçmelisiniz"),
     hamur: string().required("Hamur tipi seçmelisiniz"),
   });
+
+  // changeHandler'ımızı tanımlıyorum. Bu fonksiyonun görevi, form elemanlarının değerlerinin değiştiğinde çağırmak ve bu değerleri uygun şekilde güncellemek.
+  //Checkbox'lar için, malzeme seçili veya seçili değilse fiyatı günceller. Radio butonları için, pizza boyutunu seçtiğinizde fiyatı günceller tabi son olarak da, form verilerini güncellemek için bir nesne oluşturur ve setFormData ile günceller.
 
   function changeHandler(e) {
     // Değişen inputun değerini alıyoruz
@@ -28,7 +37,7 @@ export default function Pizza(props) {
     let { value, type, checked } = e.target;
 
     if (type === "checkbox") {
-      // Checkbox ise malzeme seçildiği veya seçilmediği durumuna göre fiyatı güncelliyoruz
+      // Checkbox ise malzeme seçildiği veya seçilmediği durumuna göre fiyatı güncelliyor.
       value = checked;
       if (checked) {
         setMalzemeFiyati(malzemeFiyati + 5);
@@ -38,11 +47,11 @@ export default function Pizza(props) {
     }
 
     if (type === "radio") {
-      // Pizza boyutu seçildiğinde fiyatı güncelliyoruz
+      // Bu kısım setPizzaFiyatı ile fiyatı güncelliyor.
       setPizzaFiyati(boyutFiyat[value]);
     }
 
-    // Form verilerini güncelliyoruz
+    // Form verilerini güncellemek için nesne oluşturdum ve setFormData ile güncel halini döndüm.
     const newFormData = {
       ...formData,
       [e.target.name]: value,
@@ -50,11 +59,13 @@ export default function Pizza(props) {
     setFormData(newFormData);
   }
 
+  // handleSubmit adında bir asenkron fonksiyon tanımladım. Temel olarak görevlerini adım adım kod ile beraber yazalım.
+
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); //
     console.log(formData);
     try {
-      // Form verilerini validate ediyoruz. userSchema yapısı ile kontrol ediyoruz
+      // Form verilerini validate ediyoruz. userSchema yapısı ile de kontrol ettik.
       await userSchema.validate(formData);
     } catch (err) {
       // Hata varsa hata mesajını güncelliyoruz
@@ -68,12 +79,12 @@ export default function Pizza(props) {
     // Form verilerini POST ile gönderiyoruz
     axios
       .post("https://reqres.in/api/orders", formData)
-      .then(function(response) {
+      .then(function (response) {
         // Sipariş başarılı bir şekilde oluşturulduğunda siparişleri güncelliyoruz
         props.addSiparis(response.data);
         window.location.href = "/success";
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // Sipariş oluşturulurken hata oluştuğunda hata mesajını kullanıcıya gösteriyoruz
         if (error.message === "Network Error") {
           alert("İnternet bağlantınızı kontrol edin");
@@ -100,7 +111,12 @@ export default function Pizza(props) {
           <p>{pizzaAdet * (pizzaFiyati + malzemeFiyati)} ₺</p>
         </div>
         <p>
-          Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.
+          Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı
+          pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
+          diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
+          ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak,
+          düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli
+          lezzetli bir yemektir.. Küçük bir pizzaya bazen pizzetta denir.
         </p>
         <p style={{ color: "#e84a5f" }}>{hataMesaji}</p>
         <form id="pizza-form" onSubmit={handleSubmit}>
@@ -172,7 +188,7 @@ export default function Pizza(props) {
               "Sarımsak",
               "Biber",
               "Ananas",
-              "Kabak"
+              "Kabak",
             ].map((malzeme, index) => (
               <div key={index}>
                 <div className="column">
@@ -251,7 +267,9 @@ export default function Pizza(props) {
                   </div>
                   <div className="fiyat-bottom">
                     <p className="total-p">Toplam</p>
-                    <p className="total-p">{pizzaAdet * (pizzaFiyati + malzemeFiyati)} ₺</p>
+                    <p className="total-p">
+                      {pizzaAdet * (pizzaFiyati + malzemeFiyati)} ₺
+                    </p>
                   </div>
                 </div>
                 <button id="order-button" type="submit">
