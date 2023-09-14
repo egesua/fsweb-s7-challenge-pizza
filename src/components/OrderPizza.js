@@ -101,7 +101,7 @@ export default function Pizza(props) {
         <div>
           <a href="/">Anasayfa</a>
           <a href="/secenekler">Seçenekler</a>
-          <a href="/order-pizza">Sipariş Oluştur</a>
+          <a href="/orderpizza">Sipariş Oluştur</a>
         </div>
       </div>
 
